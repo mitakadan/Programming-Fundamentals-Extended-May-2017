@@ -1,0 +1,22 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _06_Lists
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var listString = Console.ReadLine().Split().ToList();
+            List<string> listPrint = new List<string>(); 
+            for (int i = 0; i < listString.Count; i++)
+            {
+                if (i % 2 != 0) listPrint.Add(listString[i]);
+            }
+            Console.WriteLine(string.Join("", listPrint));
+        }
+    }
+}
