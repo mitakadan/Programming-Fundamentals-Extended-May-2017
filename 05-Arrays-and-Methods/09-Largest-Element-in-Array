@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _9__Largest_Element_in_Array
+{
+    class Program
+    {
+        static int MaxInArray(int a, int b)
+        {
+            var maxNumber = 0;
+            if (a > b) maxNumber = a;
+            else maxNumber = b;
+
+            return maxNumber;
+        }
+
+        static void Main()
+        {
+            var N = int.Parse(Console.ReadLine());
+            int[] array = new int[N];
+            
+            for (int i = 0; i < N; i++)
+            {
+                array[i] = int.Parse(Console.ReadLine());
+            }
+
+            var maxNumberPrint = array[0];
+
+            for (int i = 0; i < N; i++)
+            {
+                maxNumberPrint = MaxInArray(array[i], maxNumberPrint);
+            }
+            Console.WriteLine(maxNumberPrint);
+        }
+    }
+}
