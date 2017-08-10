@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _03_Equal_Sum_After_Extraction
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var listOne= Console.ReadLine().Split().Select(int.Parse).ToList();
+            var listTwo= Console.ReadLine().Split().Select(int.Parse).ToList();
+            int listOneSum = 0;
+            int listTwoSum = 0;
+            for (int i = 0; i < listOne.Count; i++)
+                for (int j = 0; j < listTwo.Count; j++)
+                {
+                    if (listOne[i] == listTwo[j]) listTwo.Remove(listTwo[j]);
+                }
+            for (int i = 0; i < listOne.Count; i++) listOneSum += listOne[i];
+            for (int i = 0; i < listTwo.Count; i++) listTwoSum += listTwo[i];
+
+            var resultDiff = Math.Abs(listOneSum - listTwoSum);
+
+            if (listOneSum == listTwoSum) Console.WriteLine($"Yes. Sum: {listOneSum}");
+            else Console.WriteLine($"No. Diff: {resultDiff}"); 
+        }
+    }
+}
