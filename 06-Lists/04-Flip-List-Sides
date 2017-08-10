@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _04_Flip_List_Sides
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var listOriginal = Console.ReadLine().Split().Select(int.Parse).ToList();
+
+            for (int i = 1; i < listOriginal.Count/2; i++)
+            {
+                var temporary = listOriginal[i];
+                listOriginal[i] = listOriginal[listOriginal.Count - i - 1];
+                listOriginal[listOriginal.Count - i -1] = temporary; 
+            }
+
+            for (int i = 0; i < listOriginal.Count; i++)
+            Console.Write(listOriginal[i] + " ");
+        }
+    }
+}
