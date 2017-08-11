@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _01_Shoot_List_Elements
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var shootListElement = Console.ReadLine();
+            var shootList = new List<int>();
+            var lastRemovedElement = int.MaxValue;
+
+            while (shootListElement != "stop")
+            {
+                if (shootListElement == "bang" && shootList.Count != 0)
+                {
+                    for (int i = 0; i < shootList.Count; i++)
+                    {
+                        if (shootList[i] <= shootList.Average())
+                        {
+                            lastRemovedElement = shootList[i];
+                            shootList.RemoveAt(i);
+                            Console.WriteLine($"shot {lastRemovedElement}");
+                            break;
+                        }
+                    }
+
+                    for (int k = 0; k < shootList.Count; k++)
+                    {
+                        shootList[k]--;
+                    }
+                }
+                else if (shootListElement == "bang" && shootList.Count == 0)
+                {
+                    Console.WriteLine($"nobody left to shoot! last one was {lastRemovedElement}");
+                    shootListElement = "exit";
+                    break;
+                }                
+                else
+                {
+                    shootList.Insert(0, int.Parse(shootListElement));
+                }
+
+                shootListElement = Console.ReadLine();
+            }
+
+            if (shootList.Count != 0)
+            {
+                Console.WriteLine("survivors: " + string.Join(" ", shootList));
+            }
+            else if(shootListElement != "exit")
+            {
+                Console.WriteLine("you shot them all. last one was " + lastRemovedElement);
+            }
+        }
+    }
+}
